@@ -4,9 +4,11 @@
 <x-layouts.head />
 
 <body class="bg-gray-100 min-h-screen flex flex-col">
-
-<x-layouts.header />
-
+    @if(!Route::is('admin*'))
+        <x-layouts.header />
+    @else
+        <x-layouts.header-admin />
+    @endif
 <main class="flex flex-1 container max-w-7xl mx-auto px-5 lg:px-40 space-x-5 mb-5">
     {{-- @yield('content') --}}
     {{ $slot }}
@@ -14,6 +16,9 @@
     {{-- 2. Spalte ----------------------------------------------------------------------------------}}
     <div class="space-y-5" style="width:300px;">
 
+
+    {{-- // If Abfrage wenn die URL /admin beinhaltet, dann wird dieser Bereich nicht angezeigt. --}}
+    @if(!Route::is('admin*'))
         <div class="bg-blue-700 shadow rounded-sm">
             <h2 class="text-white text-2xl p-5">Newsletter</h2>
             <div class="border-t border-blue-600 text-white p-5 text-sm">
@@ -25,14 +30,14 @@
             </div>
         </div>
 
-<x-post.newest />
-<x-post.categories />
-<x-post.trending />
+        <x-post.newest />
+        <x-post.categories />
+        <x-post.trending />
+    @endif
 
     </div>
 </main>
 
 <x-layouts.footer />
-
 </body>
 </html>

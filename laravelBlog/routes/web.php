@@ -16,9 +16,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [StartPageController::class,'index']);
 
-Route::get('/home', function () {
-    return view('welcome');
+
+Route::middleware(['auth'])->group(function(){
+    Route::prefix('admin')->group(function(){
+        Route::name('admin.')->group(function(){
+            Route::view('/', 'admin.index')->name('index');
+        });
+    });
 });
 
 
+Route::get('/post/{id}', [StartPageController::class,'show']);
 
+
+
+
+// Route::get('/home', function () {
+//     return view('welcome');
+// });
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

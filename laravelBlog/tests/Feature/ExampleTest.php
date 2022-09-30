@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Models\Post;
 
 class ExampleTest extends TestCase
 {
@@ -17,5 +18,9 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
+
+        $post = count(Post::withTrashed()->get());
+
+        $this->assertGreaterThan(1, $post);
     }
 }

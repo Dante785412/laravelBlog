@@ -22,4 +22,12 @@ class StartPageController extends Controller
 
         return view('index', compact('posts'));
     }
+
+
+    public function show($id)
+    {
+
+        $post = Post::findOrFail($id);
+        return view('blog/show', compact('post'));
+    }
 }
