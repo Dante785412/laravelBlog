@@ -1,9 +1,19 @@
-<x-layout.main>
+<x-layouts.main>
 <div class="flex-1">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-    Quibusdam veniam sed amet architecto, excepturi eaque deserunt maiores inventore?
-    Facilis necessitatibus culpa sequi dolore doloremque labore cum eligendi blanditiis sunt.
-    Doloribus enim cupiditate commodi quia rerum sint, velit, ipsum, accusamus accusantium expedita eligendi repudiandae optio dolore ducimus.
-    Aliquam aliquid recusandae ducimus?
+<h1>Hallo {{ Auth::user()->name }}</h1>
+<br>
+<br>
+<p>Du befindest dich nun im Admin-Bereich</p>
+
+<br>
+<br>
+<p>
+    Herzlich willkommen in Niedersachsen!
+    Niedersachsen ist einmalig vielseitig.
+    Eine spannende Geschichte, zahlreiche
+    kulturelle Höhepunkte und herausragende touristische Attraktionen von der Nordsee bis
+    zum Harz sind die Markenzeichen dieses Bundeslandes. Und vor allem: Niedersachsen ist
+    ein wirtschaftlich starkes Land. Weltbekannte Unternehmen, Spitzentechnologie und Spitzenforschung
+    sind hier zuhause.</p>
 </div>
-</x-layout.main>
+</x-layouts.main>

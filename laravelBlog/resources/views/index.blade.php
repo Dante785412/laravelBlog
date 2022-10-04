@@ -2,7 +2,7 @@
     {{-- 1. Spalte ----------------------------------------------------------------------------------}}
     <div class="flex-1 space-y-5">
 
-        {{-- @for ($i = 0; $i < 6; $i++) --}}
+
         @foreach ($posts as $post)
         <div class="bg-white shadow rounded">
             <img src="https://picsum.photos/800/350?random={{rand(0,100)}}" alt="Random image" class="rounded-t">

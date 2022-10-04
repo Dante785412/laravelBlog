@@ -14,11 +14,11 @@
     {{ $slot }}
 
     {{-- 2. Spalte ----------------------------------------------------------------------------------}}
-    <div class="space-y-5" style="width:300px;">
 
 
     {{-- // If Abfrage wenn die URL /admin beinhaltet, dann wird dieser Bereich nicht angezeigt. --}}
     @if(!Route::is('admin*', 'login', 'logout', 'register'))
+    <div class="space-y-5" style="width:300px;">
         <div class="bg-blue-700 shadow rounded-sm">
             <h2 class="text-white text-2xl p-5">Newsletter</h2>
             <div class="border-t border-blue-600 text-white p-5 text-sm">
@@ -33,9 +33,9 @@
         <x-post.newest />
         <x-post.categories />
         <x-post.trending />
-    @endif
 
     </div>
+    @endif
 </main>
 
 <x-layouts.footer />

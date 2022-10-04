@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\StartPageController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StartPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [StartPageController::class,'index']);
+Route::get('/', [StartPageController::class,'index'])->name('home');
 
 // Mit php artisan route:list kann man sich alle Routen anzeigen lassen.
 // In der Blade Datei kann man mit @if(!Route::is('admin*')) <code> @endif den Codeblock ein und ausblenden, wenn admin in der URL steht.
@@ -32,4 +33,4 @@ Route::get('/post/{id}', [StartPageController::class,'show']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
