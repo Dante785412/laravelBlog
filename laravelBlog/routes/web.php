@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [StartPageController::class,'index']);
 
-
+// Mit php artisan route:list kann man sich alle Routen anzeigen lassen.
+// In der Blade Datei kann man mit @if(!Route::is('admin*')) <code> @endif den Codeblock ein und ausblenden, wenn admin in der URL steht.
+// Middleware man muss in der Gruppe 'auth' sein, um hier einen Zugriff zu haben. Man muss angemeldet sein.
 Route::middleware(['auth'])->group(function(){
     Route::prefix('admin')->group(function(){
         Route::name('admin.')->group(function(){
@@ -27,15 +29,6 @@ Route::middleware(['auth'])->group(function(){
 
 
 Route::get('/post/{id}', [StartPageController::class,'show']);
-
-
-
-
-// Route::get('/home', function () {
-//     return view('welcome');
-// });
-
-
 
 Auth::routes();
 
