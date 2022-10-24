@@ -22,10 +22,8 @@ jobs:
       run: npm install -g npm
     - name: Install Dependencies
       run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/home/runner/work/laravelBlog/laravelBlog --filename=composer
-    - name: cd Directory
-      run: cd /home/runner/work/laravelBlog/laravelBlog
     - name: Composer Install
-      run: php composer install
+      run: cd /home/runner/work/laravelBlog/laravelBlog | php composer install
     - name: Generate key
       run: php artisan key:generate
     - name: Directory Permissions
