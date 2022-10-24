@@ -20,7 +20,7 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
       run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-    - name: composer installer
+    - name: Composer Installer
       run: composer install
     - name: Generate key
       run: php artisan key:generate
