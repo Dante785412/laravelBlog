@@ -20,8 +20,8 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: install npm
       run: npm install -g npm
-    - name: CD Directory
-      run: cd /home/runner/work/laravelBlog/laravelBlog
+    - name: CD Directory 
+      run: cd /home/runner/work/laravelBlog/laravelBlog | ls
     - name: Install Composer Dependencies
       run: composer install --no-progress --prefer-dist --optimize-autoloader
     - name: Generate key
