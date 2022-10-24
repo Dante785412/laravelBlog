@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\StartPageController;
 
 /*
@@ -19,7 +20,7 @@ Route::get('/', [StartPageController::class,'index'])->name('home');
 
 // Mit php artisan route:list kann man sich alle Routen anzeigen lassen.
 // In der Blade Datei kann man mit @if(!Route::is('admin*')) <code> @endif den Codeblock ein und ausblenden, wenn admin in der URL steht.
-// Middleware man muss in der Gruppe 'auth' sein, um hier einen Zugriff zu haben. Man muss angemeldet sein.
+// Middleware man muss angemeldet 'auth' sein, um hier einen Zugriff zu haben. Man muss angemeldet sein.
 Route::middleware(['auth'])->group(function(){
     Route::prefix('admin')->group(function(){
         Route::name('admin.')->group(function(){
@@ -29,8 +30,9 @@ Route::middleware(['auth'])->group(function(){
 });
 
 
-Route::get('/post/{id}', [StartPageController::class,'show']);
+Route::resource('/post', PostController::class);
 
+// Wie Route::rerscource
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
