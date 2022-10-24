@@ -26,6 +26,12 @@ jobs:
       run: ls
     - name: CD Directory 
       run: cd laravelBlog | ls
+    - name: CD laravelBlog
+      run: cd laravelBlog
+    - name: Show Work Directory
+      run: pwd
+    - name: List
+      run: ls
     - name: Install Composer Dependencies
       run: composer install --no-progress --prefer-dist --optimize-autoloader
     - name: Generate key
