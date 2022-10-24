@@ -26,6 +26,7 @@ jobs:
           GITHUB_SHA: ${{ github.sha }}
       - name: Create deployment artifact
         run: tar -czf "$(GITHUB_SHA)".tar.gz --exclude=*.git --exclude=node_modules *
+
       - name: Store Artifact for distribution
         uses: actions/upload-artifact@v2
         with:
