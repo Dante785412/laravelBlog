@@ -20,8 +20,6 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: install npm
       run: npm install -g npm
-    - name: npm Install Dependencies
-      run: npm install
     - name: Install Dependencies
       run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
     - name: Composer Installer
