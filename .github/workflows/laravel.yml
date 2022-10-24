@@ -23,10 +23,7 @@ jobs:
     - name: Install Dependencies
       run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/home/runner/work/laravelBlog/laravelBlog --filename=composer
     - name: If File Exist
-      run: FILE=/home/runner/work/laravelBlog/laravelBlog/composer.json
-        if [[ -f "$FILE" ]]; then
-        echo "$FILE exists."
-        fi
+      run: test -f /home/runner/work/laravelBlog/laravelBlog/composer.json && echo "$FILE exists."
     - name: Composer Install
       run: cd /home/runner/work/laravelBlog/laravelBlog | php composer install
     - name: Generate key
