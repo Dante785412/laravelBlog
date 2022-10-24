@@ -2,8 +2,6 @@ name: Develop Application
 
 on:
   push:
-    branches:
-      - master
 
 jobs:
   create-deployment-artifacts:
