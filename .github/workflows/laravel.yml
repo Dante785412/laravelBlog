@@ -22,5 +22,12 @@ jobs:
           extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tokenizer, xml
       - name: Install all Dependencies for Project with Composer
         run: composer install --no-dev --no-interaction --prefer-dist
+        env:
+          GITHUB_SHA: ${{ github.sha }}
       - name: Create deployment artifact
-        run: tar -czf app.tar.gz --exclude=*.git --exclude=node_modules *
+        run: tar -czf "$(GITHUB_SHA)".tar.gz --exclude=*.git --exclude=node_modules *
+      - name: Store Artifact for distribution
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-build
+          path: ${{ github.sha }}.tar.gz
