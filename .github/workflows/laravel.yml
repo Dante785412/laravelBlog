@@ -35,6 +35,7 @@ jobs:
         with:
           name: app-build
           path: ${{ github.sha }}.tar.gz
+
       - name: Export deployment matrix
         id: export-deployment-matrix
         run:
@@ -42,26 +43,24 @@ jobs:
           JSON="${JSON//'%'/'%25'}"
           JSON="${JSON//$'\n'/'%0A'}"
           JSON="${JSON//$'\r'/'%0D'}"
-          # echo "::set-output name=deployment-matrix::$JSON"
           echo "::set-output name=deployment-matrix::$(echo $JSON)"
-          # echo "{deployment-matrix}={$JSON}" >> $GITHUB_OUTPUT
 
-  prepare-release-on-servers:
-    name: "${{ matrix.server.name }}: Prepare release"
-    runs-on: ubuntu-latest
-    needs: create-deployment-artifacts
-    strategy:
-      matrix:
-        server: ${{ fromJson(needs.create-deployment-artifacts.outputs.deployment-matrix) }}
-    steps:
-    - uses: actions/download-artifact@v2
-      with:
-        name: app-build
-    - name: Upload
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ matrix.server.ip }}
-        username: ${{ matrix.server.username }}
-        port: ${{ matrix.server.port }}
-        source: ${{ github.sha }}.tar.gz
-        target: ${{ matrix.server.path }}/artifacts
+  # prepare-release-on-servers:
+  #   name: "${{ matrix.server.name }}: Prepare release"
+  #   runs-on: ubuntu-latest
+  #   needs: create-deployment-artifacts
+  #   strategy:
+  #     matrix:
+  #       server: ${{ fromJson(needs.create-deployment-artifacts.outputs.deployment-matrix) }}
+  #   steps:
+  #   - uses: actions/download-artifact@v2
+  #     with:
+  #       name: app-build
+  #   - name: Upload
+  #     uses: appleboy/scp-action@master
+  #     with:
+  #       host: ${{ matrix.server.ip }}
+  #       username: ${{ matrix.server.username }}
+  #       port: ${{ matrix.server.port }}
+  #       source: ${{ github.sha }}.tar.gz
+  #       target: ${{ matrix.server.path }}/artifacts
