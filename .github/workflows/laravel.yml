@@ -60,6 +60,6 @@ jobs:
       with:
         host: ${{ matrix.server.ip }}
         username: ${{ matrix.server.username }}
-          port: ${{ matrix.server.port }}
-          source: ${{ github.sha }}.tar.gz
-          target: ${{ matrix.server.path }}/artifacts
+        port: ${{ matrix.server.port }}
+        source: ${{ github.sha }}.tar.gz
+        target: ${{ matrix.server.path }}/artifacts
