@@ -36,7 +36,7 @@ jobs:
       - name: Store artifact for distribution
         uses: actions/upload-artifact@v2
         with:
-          name: app-build
+          name: app-build-artifact
           path: ${{ github.sha }}.tar.gz
 
       - name: Export deployment matrix
@@ -54,9 +54,11 @@ jobs:
       matrix:
         server: ${{ fromJson(needs.create-deployment-artifacts.outputs.deployment-matrix) }}
     steps:
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
       with:
-        name: app-build
+        name: app-build-artifact-artifact
+    - name: Display structure of downloaded files
+      run: ls -R
     - name: Upload
       uses: appleboy/scp-action@master
       with:
