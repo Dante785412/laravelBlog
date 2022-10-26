@@ -18,15 +18,13 @@ jobs:
         run:
           npm install
           npm run prod
+          npm run build
 
       - name: Configure PHP 8.0
         uses: shivammathur/setup-php@master
         with:
-          php-version: 7.4.30
+          php-version: 8.0
           extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tokenizer, xml
-
-      - name: Install Composer dependencies
-        run: composer update --no-dev --no-interaction --prefer-dist
 
       - name: Install Composer dependencies
         run: composer install --no-dev --no-interaction --prefer-dist
