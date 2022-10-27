@@ -7,8 +7,9 @@
             <li class="hover:text-gray-400"><a href="#">Newsletter</a></li>
             <li class="hover:text-gray-400"><a href="#">Impressum</a></li>
         </ul>
-        <ul>
+        <ul class="flex space-x-5">
             <li class="hover:text-gray-400"><a href="{{ route('admin.index') }}">Login</a></li>
+            <li class="hover:text-gray-400"><a href="{{ route('register') }}">Register</a></li>
         </ul>
     </nav>
 </header>

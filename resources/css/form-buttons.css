@@ -1,0 +1,4 @@
+
+.primary {
+    @apply bg-blue-700 text-white hover:bg-blue-500 p-2
+}
