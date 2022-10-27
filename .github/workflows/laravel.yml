@@ -3,6 +3,10 @@ name: Develop Application
 on:
   push:
 
+jobs:
+  create-deployment-artifacts:
+    name: Create deployment artifacts
+    runs-on: ubuntu-latest
 
 
 jobs:
@@ -13,6 +17,7 @@ jobs:
       deployment-matrix: ${{ steps.export-deployment-matrix.outputs.deployment-matrix }}
     steps:
       - uses: actions/checkout@v2
+
 
       - name: Compile CSS and Javascript
         run:
@@ -28,6 +33,7 @@ jobs:
         with:
           php-version: 8.0
           extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tokenizer, xml
+
 
       - name: Install Composer dependencies
         run: composer install --no-dev --no-interaction --prefer-dist
